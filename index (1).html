@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anna Gutierrez — Data & Analytics Professional </title>
+<meta name="description" content="Portfolio of data science and computational social science projects — NLP, causal inference, ETL, and applied statistics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14213D;
+    --ink-soft:#1F3157;
+    --paper:#EDEAE1;
+    --paper-line:#D9D5C7;
+    --gold:#B8842B;
+    --teal:#3F6A6D;
+    --text-on-ink:#F2EFE6;
+    --text-on-paper:#1A1A17;
+    --muted-on-paper:#5B5A52;
+    --muted-on-ink:#B9C0D6;
+    --radius:3px;
+    --max:920px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--text-on-paper);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.55;
+  }
+
+  a{color:inherit;}
+  .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(20,33,61,0.96);
+    backdrop-filter:blur(6px);
+    color:var(--text-on-ink);
+    padding:14px 24px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.04em;
+  }
+  nav .brand{font-weight:500; text-decoration:none;}
+  nav ul{list-style:none; display:flex; gap:24px; margin:0; padding:0;}
+  nav a{text-decoration:none; opacity:0.82; transition:opacity 0.15s;}
+  nav a:hover, nav a:focus-visible{opacity:1;}
+  nav a:focus-visible, a:focus-visible, button:focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+  }
+  @media (max-width:600px){
+    nav ul{gap:14px;}
+    nav{font-size:11px; padding:12px 16px;}
+  }
+
+  /* ---------- HERO (the cover of the file) ---------- */
+  header.hero{
+    background:
+      radial-gradient(1200px 500px at 15% -10%, rgba(184,132,43,0.12), transparent 60%),
+      var(--ink);
+    color:var(--text-on-ink);
+    padding:88px 24px 96px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-inner{
+    max-width:var(--max);
+    margin:0 auto;
+    position:relative;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--muted-on-ink);
+    margin:0 0 18px;
+  }
+  h1.name{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(32px, 5.5vw, 54px);
+    line-height:1.02;
+    margin:0 0 14px;
+    letter-spacing:-0.01em;
+  }
+  .role{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(18px, 3vw, 24px);
+    color:var(--muted-on-ink);
+    margin:0 0 44px;
+    max-width:560px;
+  }
+
+  /* the pinned finding — signature element */
+  .finding-tag{
+    display:inline-flex;
+    flex-direction:column;
+    gap:6px;
+    background:var(--paper);
+    color:var(--text-on-paper);
+    padding:18px 22px;
+    border-radius:var(--radius);
+    max-width:480px;
+    transform:rotate(-1.2deg);
+    box-shadow:0 18px 34px rgba(0,0,0,0.28);
+    position:relative;
+  }
+  .finding-tag::before{
+    content:"FINDING";
+    position:absolute;
+    top:-11px;
+    left:18px;
+    background:var(--gold);
+    color:#1A1A17;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    letter-spacing:0.12em;
+    padding:3px 8px;
+    border-radius:2px;
+  }
+  .finding-tag .stat{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:28px;
+    color:var(--ink);
+  }
+  .finding-tag .stat-desc{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:14.5px;
+    color:var(--muted-on-paper);
+  }
+
+  .hero-links{
+    margin-top:52px;
+    display:flex;
+    gap:22px;
+    flex-wrap:wrap;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+  }
+  .hero-links a{
+    text-decoration:none;
+    border-bottom:1px solid rgba(242,239,230,0.35);
+    padding-bottom:2px;
+    transition:border-color 0.15s;
+  }
+  .hero-links a:hover{border-color:var(--text-on-ink);}
+
+  /* ---------- SECTION SHELLS ---------- */
+  section{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:80px 24px;
+  }
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:44px;
+    border-bottom:1px solid var(--paper-line);
+    padding-bottom:16px;
+  }
+  .section-head h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(26px,4vw,34px);
+    margin:0;
+  }
+  .section-head .count{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--muted-on-paper);
+    letter-spacing:0.08em;
+  }
+
+  /* ---------- FINDINGS / PROJECTS LIST ---------- */
+  .case{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:28px;
+    padding:30px 0;
+    border-bottom:1px solid var(--paper-line);
+    opacity:0;
+    transform:translateY(14px);
+    transition:opacity 0.6s ease, transform 0.6s ease;
+  }
+  .case.is-visible{opacity:1; transform:translateY(0);}
+  .case:last-child{border-bottom:none;}
+  .case-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--teal);
+    line-height:1.5;
+  }
+  .case h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:21px;
+    margin:0 0 10px;
+  }
+  .case p{
+    margin:0 0 14px;
+    color:#33322D;
+    max-width:60ch;
+  }
+  .case .stack{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--muted-on-paper);
+    margin:0 0 12px;
+  }
+  .case .view{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    text-decoration:none;
+    color:var(--ink);
+    border-bottom:1px solid transparent;
+    transition:border-color 0.15s, gap 0.15s;
+  }
+  .case .view:hover, .case .view:focus-visible{
+    border-color:var(--ink);
+    gap:9px;
+  }
+  .case.no-tag{grid-template-columns:1fr;}
+  @media (max-width:640px){
+    .case{grid-template-columns:1fr; gap:8px;}
+  }
+  .case.no-tag{grid-template-columns:1fr;}
+
+  /* ---------- METHOD / SKILLS ---------- */
+  .method-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+    gap:32px;
+  }
+  .method-group h4{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin:0 0 12px;
+  }
+  .method-group ul{
+    list-style:none;
+    margin:0; padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    font-size:15px;
+    color:#33322D;
+  }
+
+  /* ---------- CONTACT ---------- */
+  footer.contact{
+    background:var(--ink);
+    color:var(--text-on-ink);
+    padding:80px 24px;
+  }
+  .contact-inner{
+    max-width:var(--max);
+    margin:0 auto;
+  }
+  .contact-inner h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(28px,5vw,42px);
+    margin:0 0 16px;
+    max-width:14ch;
+  }
+  .contact-inner p{
+    color:var(--muted-on-ink);
+    max-width:52ch;
+    margin:0 0 34px;
+  }
+  .contact-links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .contact-links a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:14px;
+    text-decoration:none;
+    padding:12px 18px;
+    border:1px solid rgba(242,239,230,0.3);
+    border-radius:var(--radius);
+    transition:background 0.15s, border-color 0.15s;
+  }
+  .contact-links a:hover, .contact-links a:focus-visible{
+    background:rgba(242,239,230,0.08);
+    border-color:var(--text-on-ink);
+  }
+  .contact-inner .signoff{
+    margin-top:56px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--muted-on-ink);
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="#top">Anna Gutierrez</a>
+  <ul>
+    <li><a href="#findings">Projects</a></li>
+    <li><a href="#method">Methods</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <p class="eyebrow">Data Analytics &amp; Computational Social Science</p>
+    <!-- REPLACE "Anna" below with your full name -->
+    <h1 class="name">Anna Gutierrez</h1>
+    <p class="role">Passionate about using data to solve complex problems across industries.</p>
+
+    <div class="hero-links">
+      <!-- Update these three links -->
+      <a href="https://github.com/annagtz1" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/anna-gutierrez-m-s/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="https://drive.google.com/file/d/18Z_jcEZngU_bxekYAchCAjbvsk7Q4vx-/view?usp=sharing" target="_blank" rel="noopener">Resume ↗</a>
+    </div>
+  </div>
+</header>
+
+<section id="findings">
+  <div class="section-head">
+    <h2>Projects</h2>
+    <span class="count">n = 8</span>
+  </div>
+
+  <div class="case">
+    <span class="case-tag">NLP · Topic Modeling</span>
+    <div>
+      <h3>Skill Demand in AI/ML Job Postings</h3>
+      <p>Clustered large-scale AI/ML and data science job postings into distinct skill ecosystems using word embeddings and structural topic modeling, then trained a classifier that separates tech-focused postings with 0.97 AUC. Cloud and MLOps terms — AWS, Docker, Kubernetes — proved to be the strongest signal, not the LLM keywords everyone expected.</p>
+      <p class="stack">Python · word embeddings · STM · scikit-learn</p>
+      <a class="view" href="https://github.com/annagtz1/skill-demand-ai-ml-job-postings" target="_blank" rel="noopener">View repository →</a>
+    </div>
+  </div>
+
+  <div class="case">
+    <span class="case-tag">Machine Learning · Classification</span>
+    <div>
+      <h3>Predicting Credit Card Default</h3>
+      <p>Built and compared five models — logistic regression, random forest, gradient boosting, and others — to predict client default from demographic and financial data, tuning for the real-world tradeoff between catching risk and over-flagging good customers.</p>
+      <p class="stack">Python · cross-validation · hyperparameter tuning</p>
+      <a class="view" href="https://github.com/annagtz1/credit-card-default-prediction" target="_blank" rel="noopener">View repository →</a>
+    </div>
+  </div>
+
+  <div class="case">
+    <span class="case-tag">Data Engineering · ETL</span>
+    <div>
+      <h3>E-Commerce Data Pipeline</h3>
+      <p>Designed a Prefect-orchestrated ETL pipeline that pulls raw Brazilian e-commerce order data and BRL→USD exchange rates and turns them into clean, analysis-ready reports, cutting the manual work out of a recurring reporting cycle.</p>
+      <p class="stack">Python · Prefect · API integration</p>
+      <a class="view" href="https://github.com/annagtz1/ecommerce-etl-pipeline" target="_blank" rel="noopener">View repository →</a>
+    </div>
+  </div>
+
+  <div class="case">
+    <span class="case-tag">Causal Inference · Statistical Modeling</span>
+    <div>
+      <h3>Modeling Climate Concern</h3>
+      <p>Used multiple regression and causal-inference design to separate what actually shapes public climate concern — income, education, exposure to climate risk — from what merely correlates with it, then translated the results into recommendations for non-technical stakeholders.</p>
+      <p class="stack">R · regression modeling · experimental design</p>
+      <a class="view" href="https://github.com/annagtz1/modeling-climate-concern" target="_blank" rel="noopener">View repository →</a>
+    </div>
+  </div>
+
+  <div class="case">
+    <span class="case-tag">Survey Research</span>
+    <div>
+      <h3>Public Opinion on AI</h3>
+      <p>Designed and fielded an original survey on AI trust, awareness, and attitudes, then ran descriptive and inferential analysis to find where knowledge, sentiment, and transparency preferences diverge across demographics — delivered as recommendations to a simulated product team.</p>
+      <p class="stack">Qualtrics · R · survey design</p>
+      <a class="view" href="https://github.com/annagtz1/public-opinion-on-ai" target="_blank" rel="noopener">View repository →</a>
+    </div>
+  </div>
+
+  <div class="case">
+    <span class="case-tag">Geospatial ML</span>
+    <div>
+      <h3>U.S. Bird Biodiversity</h3>
+      <p>Pulled nationwide bird-observation data from the eBird API and applied K-means clustering and temporal analysis to map which species tolerate human-altered environments — built as an input to conservation and urban-biodiversity planning, not just a curiosity project.</p>
+      <p class="stack">Python · eBird API · geospatial analysis</p>
+      <a class="view" href="https://github.com/annagtz1/us-bird-biodiversity-geospatial-ml" target="_blank" rel="noopener">View repository →</a>
+    </div>
+  </div>
+
+ 
+</section>
+
+<section id="method">
+  <div class="section-head">
+    <h2>Methods</h2>
+    <span class="count">tools &amp; approach</span>
+  </div>
+  <div class="method-grid">
+    <div class="method-group">
+      <h4>Languages</h4>
+      <ul>
+        <li>Python</li>
+        <li>R</li>
+        <li>SQL</li>
+      </ul>
+    </div>
+    <div class="method-group">
+      <h4>Machine Learning</h4>
+      <ul>
+        <li>Supervised classification</li>
+        <li>Model evaluation &amp; cross-validation</li>
+        <li>Clustering (K-means)</li>
+      </ul>
+    </div>
+    <div class="method-group">
+      <h4>NLP &amp; Text-as-Data</h4>
+      <ul>
+        <li>Word embeddings</li>
+        <li>Topic modeling (STM)</li>
+      </ul>
+    </div>
+    <div class="method-group">
+      <h4>Data Engineering</h4>
+      <ul>
+        <li>ETL pipelines (Prefect)</li>
+        <li>API integration</li>
+        <li>Reproducible workflows</li>
+      </ul>
+    </div>
+    <div class="method-group">
+      <h4>Research Design</h4>
+      <ul>
+        <li>Causal inference</li>
+        <li>Regression &amp; ANOVA</li>
+        <li>Survey design (Qualtrics)</li>
+      </ul>
+    </div>
+    <div class="method-group">
+      <h4>Communication</h4>
+      <ul>
+        <li>Stakeholder-facing reporting</li>
+        <li>Data visualization</li>
+        <li>Analytical storytelling</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="section-head">
+    <h2>Education</h2>
+    <span class="count">2 degrees</span>
+  </div>
+
+  <div class="case is-visible no-tag">
+    <div>
+      <h3>M.S. in Data Analytics and Computational Social Science</h3>
+      <p>University of Massachusetts Amherst</p>
+    </div>
+  </div>
+
+  <div class="case is-visible no-tag">
+    <div>
+      <h3>B.A. in Sociology, Minor in Digital Humanities</h3>
+      <p>University of California, Los Angeles</p>
+    </div>
+  </div>
+
+</section>
+
+<footer class="contact" id="contact">
+  <div class="contact-inner">
+    <h2>Let's Connect!</h2>
+    <p>Exploring opportunities in analytics, data science, research, and beyond.</p>
+    <div class="contact-links">
+      <!-- Replace with real contact info -->
+      <a href="mailto:annagutierrez3359@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/anna-gutierrez-m-s/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="https://github.com/annagtz1" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+    <p class="signoff">Last updated July 2026</p>
+  </div>
+</footer>
+
+<script>
+  const cases = document.querySelectorAll('.case');
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.15});
+    cases.forEach(c=>io.observe(c));
+  } else {
+    cases.forEach(c=>c.classList.add('is-visible'));
+  }
+</script>
+
+</body>
+</html>
